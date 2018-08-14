@@ -43,7 +43,7 @@ grafana_copy_default_dashboards:
 
 {%- endif %}
 
-{%- for theme_name, theme in server.get('theme', {}).iteritems() %}
+{%- for theme_name, theme in server.get('theme', {}).items() %}
 
 {%- if theme.css_override is defined %}
 
@@ -79,7 +79,7 @@ grafana_service:
   - watch:
     - file: /etc/grafana/grafana.ini
 
-{%- for plugin_name, plugin in server.get('plugins', {}).iteritems() %}
+{%- for plugin_name, plugin in server.get('plugins', {}).items() %}
 {%- if plugin.get('enabled', False) %}
 install_{{ plugin_name }}:
   cmd.run:
